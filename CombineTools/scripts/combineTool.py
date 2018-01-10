@@ -11,8 +11,11 @@ from CombineHarvester.CombineTools.combine.CovMatrix import CovMatrix
 from CombineHarvester.CombineTools.combine.LimitGrids import AsymptoticGrid, HybridNewGrid
 from CombineHarvester.CombineTools.combine.Output import PrintFit, CollectLimits, CollectGoodnessOfFit
 from CombineHarvester.CombineTools.combine.T2W import T2W
+from CombineHarvester.CombineTools.combine.FastScan import FastScan
+from CombineHarvester.CombineTools.combine.TaylorExpand import TaylorExpand
 
 ROOT.PyConfig.IgnoreCommandLineOptions = True
+ROOT.gROOT.SetBatch(ROOT.kTRUE)
 
 
 def register_method(parser, method_dict, method_class):
@@ -40,6 +43,8 @@ register_method(parser, methods, CovMatrix)
 register_method(parser, methods, PrintFit)
 register_method(parser, methods, AsymptoticGrid)
 register_method(parser, methods, HybridNewGrid)
+register_method(parser, methods, FastScan)
+register_method(parser, methods, TaylorExpand)
 
 parser.add_argument('-M', '--method')
 

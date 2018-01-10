@@ -785,10 +785,13 @@ void CombineHarvester::WriteDatacard(std::string const& name,
     for (auto const& obs : obs_) {
       txt_file << format("%-15s ") % obs->bin();
       if (obs->shape()) {
+        bool add_dir = TH1::AddDirectoryStatus();
+        TH1::AddDirectory(false);
         std::unique_ptr<TH1> h((TH1*)(obs->shape()->Clone()));
         h->Scale(obs->rate());
         WriteHistToFile(h.get(), &root_file, mappings, obs->bin(), "data_obs",
                         obs->mass(), "", 0);
+        TH1::AddDirectory(add_dir);
       }
     }
     txt_file << "\n";
@@ -822,9 +825,12 @@ void CombineHarvester::WriteDatacard(std::string const& name,
   txt_file << format("%-"+sys_str_long+"s") % "bin";
   for (auto const& proc : procs_) {
     if (proc->shape()) {
+      bool add_dir = TH1::AddDirectoryStatus();
+      TH1::AddDirectory(false);
       std::unique_ptr<TH1> h = proc->ClonedScaledShape();
       WriteHistToFile(h.get(), &root_file, mappings, proc->bin(),
                       proc->process(), proc->mass(), "", 0);
+      TH1::AddDirectory(add_dir);
     }
     txt_file << format("%-15s ") % proc->bin();
   }
@@ -1012,7 +1018,10 @@ void CombineHarvester::WriteDatacard(std::string const& name,
         txt_file << format(" [%.4g,%.4g]") % par->range_d() % par->range_u();
       }
       txt_file << "\n";
-    } else {
+    }
+  }
+  for (auto const& rp : floating_params) {
+    if (!params_.count(rp[0])) {
       // If we don't have a ch::Parameter with this name, then we'll assume
       // this is a function
       RooWorkspace *rp_ws = wspaces_.at("_rateParams").get();
