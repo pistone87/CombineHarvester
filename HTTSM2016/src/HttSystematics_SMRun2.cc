@@ -357,6 +357,16 @@ namespace ch {
         cb.cp().process({"ggH_htt125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativeBal_$ERA", "lnN", SystMap<>::init(0.978152281977));
         cb.cp().process({"ggH_htt125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativePtEC2_$ERA", "lnN", SystMap<>::init(1.00304039446));
         cb.cp().process({"ggH_htt125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativePtHF_$ERA", "lnN", SystMap<>::init(1.01605523932));
+		// signal samples for CP studies in the final state
+		// TODO: calculate systematics
+		// At the moment, for both signal, sys as for ggH
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativeBal_$ERA", "lnN", SystMap<>::init(0.978152281977));
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativePtEC2_$ERA", "lnN", SystMap<>::init(1.00304039446));
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativePtHF_$ERA", "lnN", SystMap<>::init(1.01605523932));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativeBal_$ERA", "lnN", SystMap<>::init(0.978152281977));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativePtEC2_$ERA", "lnN", SystMap<>::init(1.00304039446));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativePtHF_$ERA", "lnN", SystMap<>::init(1.01605523932));
+		//
         cb.cp().process({"qqH_htt125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_FlavorQCD_$ERA", "lnN", SystMap<>::init(1.00733361765));
         cb.cp().process({"qqH_htt125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativeBal_$ERA", "lnN", SystMap<>::init(0.984061069106));
         cb.cp().process({"qqH_htt125"}).channel({"tt"}).bin_id({3}).AddSyst(cb,"CMS_scale_j_RelativePtHF_$ERA", "shape", SystMap<>::init(1.00));
@@ -422,6 +432,20 @@ namespace ch {
         cb.cp().process({"ggH_htt125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_PileUpPtHF_$ERA", "lnN", SystMap<>::init(0.996671566248));
         cb.cp().process({"ggH_htt125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_RelativeBal_$ERA", "shape", SystMap<>::init(1.00));
         cb.cp().process({"ggH_htt125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_RelativePtHF_$ERA", "shape", SystMap<>::init(1.00));
+		// CP final state signal
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_FlavorQCD_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_PileUpDataMC_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_PileUpPtEC1_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_PileUpPtHF_$ERA", "lnN", SystMap<>::init(0.996671566248));
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_RelativeBal_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_RelativePtHF_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_FlavorQCD_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_PileUpDataMC_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_PileUpPtEC1_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_PileUpPtHF_$ERA", "lnN", SystMap<>::init(0.996671566248));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_RelativeBal_$ERA", "shape", SystMap<>::init(1.00));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_RelativePtHF_$ERA", "shape", SystMap<>::init(1.00));
+		//
         cb.cp().process({"qqH_htt125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_AbsoluteMPFBias_$ERA", "shape", SystMap<>::init(1.00));
         cb.cp().process({"qqH_htt125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_AbsoluteScale_$ERA", "lnN", SystMap<>::init(0.985040891467));
         cb.cp().process({"qqH_htt125"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_AbsoluteStat_$ERA", "lnN", SystMap<>::init(0.985040891467));
@@ -495,6 +519,10 @@ namespace ch {
         cb.cp().process({"ZJ"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_SinglePionECAL_$ERA", "lnN", SystMap<>::init(1.00762890882));
         cb.cp().process({"ZJ"}).channel({"tt"}).bin_id({1}).AddSyst(cb,"CMS_scale_j_SinglePionHCAL_$ERA", "lnN", SystMap<>::init(1.00762890882));
         cb.cp().process({"ggH_htt125"}).channel({"tt"}).bin_id({2}).AddSyst(cb,"CMS_scale_j_FlavorQCD_$ERA", "lnN", SystMap<>::init(1.00824765659));
+		// CP final state signal
+        cb.cp().process({"smHcpeven125"}).channel({"tt"}).bin_id({2}).AddSyst(cb,"CMS_scale_j_FlavorQCD_$ERA", "lnN", SystMap<>::init(1.00824765659));
+        cb.cp().process({"susyHcpodd_ALT125"}).channel({"tt"}).bin_id({2}).AddSyst(cb,"CMS_scale_j_FlavorQCD_$ERA", "lnN", SystMap<>::init(1.00824765659));
+		//
         cb.cp().process({"qqH_htt125"}).channel({"tt"}).bin_id({2}).AddSyst(cb,"CMS_scale_j_RelativeBal_$ERA", "lnN", SystMap<>::init(1.0091440601));
         cb.cp().process({"W"}).channel({"tt"}).bin_id({2}).AddSyst(cb,"CMS_scale_j_AbsoluteMPFBias_$ERA", "lnN", SystMap<>::init(1.00338910703));
         cb.cp().process({"W"}).channel({"tt"}).bin_id({2}).AddSyst(cb,"CMS_scale_j_AbsoluteScale_$ERA", "lnN", SystMap<>::init(1.00306955129));
