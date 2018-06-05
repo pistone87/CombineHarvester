@@ -128,13 +128,9 @@ int main(int argc, char** argv) {
 //    input_dir["mt"]  = string(getenv("CMSSW_BASE")) + "/src/CombineHarvester/HTTSM2016/shapes/"+input_folder_mt+"/";
 //    input_dir["et"]  = string(getenv("CMSSW_BASE")) + "/src/CombineHarvester/HTTSM2016/shapes/"+input_folder_et+"/";
 
-//    input_dir["tt"]  = string(getenv("CMSSW_BASE")) + "/src/CombineHarvester/HTTSM2016/shapes/"+input_folder_tt+"/";
-//    input_dir["mm"]  = string(getenv("CMSSW_BASE")) + "/src/CombineHarvester/HTTSM2016/shapes/"+input_folder_mm+"/";
-//    input_dir["ttbar"]  = string(getenv("CMSSW_BASE")) + "/src/CombineHarvester/HTTSM2016/shapes/"+input_folder_ttbar+"/";
-//    
-    input_dir["tt"]  = string(getenv("CMSSW_BASE")) + "/src/plots/htt_datacards/shapes/"+input_folder_tt+"/";
-    input_dir["mm"]  = string(getenv("CMSSW_BASE")) + "/src/plots/htt_datacards/shapes/"+input_folder_mm+"/";
-    input_dir["ttbar"]  = string(getenv("CMSSW_BASE")) + "/src/plots/htt_datacards/shapes/"+input_folder_ttbar+"/";
+    input_dir["tt"]  = string(getenv("CMSSW_BASE")) + "/src/CombineHarvester/HTTSM2016/shapes/"+input_folder_tt+"/";
+    input_dir["mm"]  = string(getenv("CMSSW_BASE")) + "/src/CombineHarvester/HTTSM2016/shapes/"+input_folder_mm+"/";
+    input_dir["ttbar"]  = string(getenv("CMSSW_BASE")) + "/src/CombineHarvester/HTTSM2016/shapes/"+input_folder_ttbar+"/";
 
 
     //VString chns = {"mt","et","tt","em"};
