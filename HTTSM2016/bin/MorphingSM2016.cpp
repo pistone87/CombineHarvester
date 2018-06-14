@@ -75,7 +75,7 @@ int main(int argc, char** argv) {
     int control_region = 0;
     bool auto_rebin = false;
     bool manual_rebin = false;
-    bool real_data = false;
+    bool real_data = true;
     bool check_neg_bins = false;
     bool poisson_bbb = false;
     bool do_w_weighting = false;
@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
     ("control_region", po::value<int>(&control_region)->default_value(0))
     ("auto_rebin", po::value<bool>(&auto_rebin)->default_value(false))
     ("manual_rebin", po::value<bool>(&manual_rebin)->default_value(false))
-    ("real_data", po::value<bool>(&real_data)->default_value(false))
+    ("real_data", po::value<bool>(&real_data)->default_value(real_data))
     ("check_neg_bins", po::value<bool>(&check_neg_bins)->default_value(false))
     ("poisson_bbb", po::value<bool>(&poisson_bbb)->default_value(false))
     ("w_weighting", po::value<bool>(&do_w_weighting)->default_value(false))
@@ -281,7 +281,6 @@ int main(int argc, char** argv) {
     }
 
     //! [part7]
-    //for (string chn:chns){
 	for (string chn : cb.channel_set()){
 		string channel = chn;
         cb.cp().channel({chn}).backgrounds().ExtractShapes(
@@ -320,6 +319,19 @@ int main(int argc, char** argv) {
 		if(sys->value_d() <0.001) {sys->set_value_d(0.001);};
     });
 
+
+
+	// use asimov datasets
+	// TODO atm, this block is defined for tt channel only. Add also other channels
+	if(!real_data){
+		for (auto b : cb.cp().FilterAll(BinIsControlRegion).bin_set()) {
+			std::cout << " - Replacing data with asimov in bin " << b << "\n";
+			cb.cp().bin({b}).ForEachObs([&](ch::Observation *obs) {
+				obs->set_shape(cb.cp().bin({b}).backgrounds().process(bkg_procs["tt"]).GetShape()+cb.cp().bin({b}).signals().process({"smHcpeven"}).mass({"125"}).GetShape(), true);
+				obs->set_rate(cb.cp().bin({b}).backgrounds().process(bkg_procs["tt"]).GetRate()+cb.cp().bin({b}).signals().process({"smHcpeven"}).mass({"125"}).GetRate());
+			}); // end of ForEachObs
+		} // end of loop over bins
+	} // end of if !real_data
 
 
 
