@@ -273,6 +273,21 @@ int main(int argc, char** argv) {
 
     ch::AddSMRun2Systematics(cb, control_region, mm_fit, ttbar_fit);
 
+	// mixed-type systematics are converted to shape-type systematics
+	//std::set<std::string> test = cb.cp().bin_id({2}).syst_name({"CMS_scale_j_FlavorQCD_13TeV"}).syst_type_set();
+	//std::cout << "++++++++++++++ " << test.size() << std::endl;
+	for (auto b : cb.cp().FilterAll(BinIsControlRegion).bin_set()) {
+		std::cout << "bin " << b << std::endl;
+		for (auto s : cb.cp().FilterAll(BinIsControlRegion).syst_name_set()) {
+			if ( cb.cp().bin({b}).syst_name({s}).syst_type_set().size()>1 ){
+				std::cout << "In bin " << b << " systematics " << s << " is of mixed type. It will be converted to shape type" << std::endl;
+				cb.cp().bin({b}).syst_name({s}).ForEachSyst([](ch::Systematic *sys) { sys->set_type("shape"); });
+			} // end if
+		} // end loop over syst_set
+	} // end loop over bin_set
+
+
+
     if (! only_init.empty()) {
         std::cout << "Write datacards (without shapes) to directory \"" << only_init << "\" and quit." << std::endl;
         ch::CardWriter tmpWriter("$TAG/$ANALYSIS_$ERA_$CHANNEL_$BINID_$MASS.txt", "$TAG/dummy.root");
